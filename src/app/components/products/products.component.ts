@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input  } from '@angular/core';
 import { IProduct } from 'src/app/interface/iproduct';
+import productJSON from '../../mok/products.json'
 
 @Component({
   selector: 'app-products',
@@ -8,20 +8,19 @@ import { IProduct } from 'src/app/interface/iproduct';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  constructor(private http: HttpClient){}
+  constructor(){}
   products: IProduct[] = []
-
+  data: any = productJSON;
+  @Input() mostViewed: boolean = false
+  @Input() filterCat : string = ''
   ngOnInit(): void {
-    const productJSON = '../../mok/products.json'
-    
-    this.http.get<any[]>(productJSON).subscribe(
-      (data) => {
-        this.products = data;
-        console.log(this.products); // Puedes hacer lo que necesites con los productos aquí
-      },
-      (error) => {
-        console.error('Error cargando el archivo JSON', error);
-      }
-    );
+    this.products = this.data
+    if (this.mostViewed) {
+      this.products = this.products.slice(0,4)
+    }
+
+    if (this.filterCat  ) {
+      
+    }
   }
 }
