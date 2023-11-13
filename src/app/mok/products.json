@@ -1,0 +1,52 @@
+[
+    {
+      "prod_name": "CPU",
+      "prod_description": "Central processing unit",
+      "prod_img": "cpu.jpg"
+    },
+    {
+      "prod_name": "GPU",
+      "prod_description": "Graphics processing unit",
+      "prod_img": "gpu.jpg"
+    },
+    {
+      "prod_name": "RAM",
+      "prod_description": "Random access memory",
+      "prod_img": "ram.jpg"
+    },
+    {
+      "prod_name": "SSD",
+      "prod_description": "Solid state drive",
+      "prod_img": "ssd.jpg"
+    },
+    {
+      "prod_name": "HDD",
+      "prod_description": "Hard disk drive",
+      "prod_img": "hdd.jpg"
+    },
+    {
+      "prod_name": "Motherboard",
+      "prod_description": "Main circuit board",
+      "prod_img": "motherboard.jpg"
+    },
+    {
+      "prod_name": "Power Supply",
+      "prod_description": "Converts main AC to low-voltage DC power",
+      "prod_img": "psu.jpg"
+    },
+    {
+      "prod_name": "Case",
+      "prod_description": "Enclosure for the components",
+      "prod_img": "case.jpg"
+    },
+    {
+      "prod_name": "Cooling System",
+      "prod_description": "Keeps the components cool",
+      "prod_img": "cooling.jpg"
+    },
+    {
+      "prod_name": "Monitor",
+      "prod_description": "Displays the output from the components",
+      "prod_img": "monitor.jpg"
+    }
+  ]
