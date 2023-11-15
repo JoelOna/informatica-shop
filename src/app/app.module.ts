@@ -8,6 +8,8 @@ import { ProductsComponent } from './components/products/products.component';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
+import { FilterProductsComponent } from './components/filter-products/filter-products.component';
+import { ProductComponent } from './components/product/product.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { FooterComponent } from './components/footer/footer.component';
     NavbarComponent,
     ProductsComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    FilterProductsComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
