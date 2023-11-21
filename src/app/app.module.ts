@@ -10,6 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
 import { FilterProductsComponent } from './components/filter-products/filter-products.component';
 import { ProductComponent } from './components/product/product.component';
+import { LoginComponent } from './components/login/login.component';
+import { AdminDashboardComponent } from './admin/components/admin-dashboard/admin-dashboard.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 
 @NgModule({
@@ -20,7 +23,10 @@ import { ProductComponent } from './components/product/product.component';
     HomeComponent,
     FooterComponent,
     FilterProductsComponent,
-    ProductComponent
+    ProductComponent,
+    LoginComponent,
+    AdminDashboardComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
