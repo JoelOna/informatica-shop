@@ -13,6 +13,7 @@ import { ProductComponent } from './components/product/product.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminDashboardComponent } from './admin/components/admin-dashboard/admin-dashboard.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { TotalEarnedComponent } from './admin/components/total-earned/total-earned.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { SignupComponent } from './components/signup/signup.component';
     ProductComponent,
     LoginComponent,
     AdminDashboardComponent,
-    SignupComponent
+    SignupComponent,
+    TotalEarnedComponent
   ],
   imports: [
     BrowserModule,
