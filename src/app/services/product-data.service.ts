@@ -11,10 +11,15 @@ export class ProductDataService {
 
   constructor(private _http: HttpClient) { }
     
-  public getCharacters(url?:string): Observable<HttpResponse<any>>{
+  public getProducts(url?:string): Observable<HttpResponse<any>>{
     const finalUrl = url || environment.apiUrl+ 'products'
     return this._http.get(finalUrl, { observe: 'response' });
   }
+
+  public getProduct(product_id: number): Observable<HttpResponse<any>>{
+    return this._http.get(environment.apiUrl+ `product/${product_id}`, { observe: 'response' });
+  }
+
   public insertProduct(product:IProduct): Observable<HttpResponse<any>>{
     return this._http.post(environment.apiUrl+`product`,product, { observe: 'response' });
   }

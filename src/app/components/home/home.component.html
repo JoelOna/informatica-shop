@@ -61,15 +61,10 @@
 <section class="mt-20">
     <h2 class="text-center uppercase text-3xl font-bold">Una amplia variedad de productos</h2>
     <ul class="flex flex-wrap items-center justify-center text-gray-900 pt-10 pb-10  uppercase font-semibold text-lg">
-        <li>
-            <a href="#" class="me-4 hover:border-b-2 hover:border-blue-600 md:me-6 active:border-b-2 active:border-blue-600" filterCat="CAT 1">Categoría 1</a>
+        <li *ngFor="let cat of categories">
+            <a href="#" class="me-4 hover:border-b-2 hover:border-blue-600 md:me-6 active:border-b-2 active:border-blue-600" [attr.filterCat]="cat.cat_name">{{cat.cat_name}}</a>
         </li>
-        <li>
-            <a href="#" class="me-4 hover:border-b-2 hover:border-blue-600 md:me-6 active:border-b-2 active:border-blue-600" filterCat="CAT 2">Categoría 2</a>
-        </li>
-        <li>
-            <a href="#" class="me-4 hover:border-b-2 hover:border-blue-600 md:me-6 active:border-b-2 active:border-blue-600" filterCat="CAT 3">Categoría 3</a>
-        </li>
+       
     </ul>
 
     <app-products></app-products>

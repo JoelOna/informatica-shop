@@ -14,6 +14,9 @@ import { LoginComponent } from './components/login/login.component';
 import { AdminDashboardComponent } from './admin/components/admin-dashboard/admin-dashboard.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { TotalEarnedComponent } from './admin/components/total-earned/total-earned.component';
+import { ListProductsComponent } from './admin/components/products/list-products/list-products.component';
+import { DashboardContentComponent } from './admin/components/dashboard-content/dashboard-content.component';
+import { ViewProductComponent } from './admin/components/products/view-product/view-product.component';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { TotalEarnedComponent } from './admin/components/total-earned/total-earn
     LoginComponent,
     AdminDashboardComponent,
     SignupComponent,
-    TotalEarnedComponent
+    TotalEarnedComponent,
+    ListProductsComponent,
+    DashboardContentComponent,
+    ViewProductComponent
   ],
   imports: [
     BrowserModule,

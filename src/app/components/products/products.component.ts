@@ -18,9 +18,13 @@ export class ProductsComponent implements OnInit {
   @Input() filterCat : string = ''
 
   ngOnInit(): void {
-    this.productService.getCharacters().subscribe(
+    this.productService.getProducts().subscribe(
       respone =>{
         this.products = respone.body.data
+        if (this.mostViewed) {
+          this.products = this.products.slice(0,4)
+        }
+
         this.nextPage = respone.body.info.next_page
         this.prevPage = respone.body.info.prev_page
         console.log(this.nextPage)
@@ -28,12 +32,11 @@ export class ProductsComponent implements OnInit {
 
         const nextPageBtn = this.elementRef.nativeElement.querySelector('#next-page')
         nextPageBtn.addEventListener('click', ()=> this.getNextProducts(this.nextPage, nextPageBtn))
-        
     
         
 
         const prevPageBtn = this.elementRef.nativeElement.querySelector('#prev-page')
-        prevPageBtn.addEventListener('click', ()=> this.getPrevProducts(this.prevPage, prevPageBtn))
+        prevPageBtn.addEventListener('click', ()=> this.getPrevProducts(this.prevPage, prevPageBtn, nextPageBtn))
   
       },
       error=>{
@@ -41,11 +44,6 @@ export class ProductsComponent implements OnInit {
       }
      
     )
-   
-    
-    // if (this.mostViewed) {
-    //   this.products = this.products.slice(0,4)
-    // }
 
     if (this.filterCat  ) {
       
@@ -56,10 +54,11 @@ export class ProductsComponent implements OnInit {
     if (url === null) {
       nextPageBtn?.setAttribute('disabled', 'true');
     }
-    this.productService.getCharacters(url).subscribe(
+    this.productService.getProducts(url).subscribe(
       response =>{
         console.log(response.body.data)
-        this.products.push(...response.body.data)
+        this.products = []
+        this.products = response.body.data
         if (response.body.info.next_page == null) {
           nextPageBtn?.setAttribute('disabled', 'true');
         }
@@ -73,13 +72,15 @@ export class ProductsComponent implements OnInit {
       
     )
   }
-  private getPrevProducts(url:string, prevPageBtn:any){
-    this.productService.getCharacters(url).subscribe(
+  private getPrevProducts(url:string, prevPageBtn:any, nextPageBtn:any){
+    this.productService.getProducts(url).subscribe(
       response =>{
-        console.log(response.body.data)
-        this.products.push(...response.body.data)
-        if (response.body.info.next_page == null) {
+        console.log('prev: ',response.body.data)
+        this.products = []
+        this.products = response.body.data
+        if (response.body.info.prev_page == null) {
           prevPageBtn?.setAttribute('disabled', 'true');
+          nextPageBtn?.setAttribute('disabled', 'false');
         }
         this.nextPage = response.body.info.next_page
         

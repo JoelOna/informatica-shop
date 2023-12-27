@@ -39,7 +39,7 @@
 
 </div>
 </section>
-<section>
+<section [ngClass]="{'block': !mostViewed, ' hidden': mostViewed}">
     <button class="btn" id="prev-page"> - </button>
     <button class="btn" id="next-page"> + </button>
 </section>

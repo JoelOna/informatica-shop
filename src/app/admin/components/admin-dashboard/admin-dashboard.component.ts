@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-dashboard.component.scss']
 })
 export class AdminDashboardComponent {
+    constructor(){}
+    component_to_show: string = ''
+
+    showComponent(component:string): void{
+      this.component_to_show = component
+      console.log(component)
+    }
 
 }
