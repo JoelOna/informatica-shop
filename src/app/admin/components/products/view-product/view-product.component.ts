@@ -10,6 +10,7 @@ import { ProductDataService } from 'src/app/services/product-data.service';
 })
 export class ViewProductComponent implements OnInit{
   constructor (private productos_services: ProductDataService,private route: ActivatedRoute){}
+  view_product: string = 'view_product'
   producto: IProduct = {
     id: 0,
     prod_name:'',

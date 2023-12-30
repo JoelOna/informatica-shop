@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class AdminDashboardComponent {
     constructor(){}
     component_to_show: string = ''
+    @Input() component_in: string= ''
 
     showComponent(component:string): void{
       this.component_to_show = component

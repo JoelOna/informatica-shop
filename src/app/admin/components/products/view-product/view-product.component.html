@@ -1,1 +1,55 @@
-<p>view-product works!</p>
+<section class="container mx-auto px-20">
+    <div class="grid md:grid-cols-2 grid-cols-1 gap-4">
+        <div class="max-w-md">
+            <img src="../../../../../assets/carousel-1.svg" alt="">
+        </div>
+        <div>
+            <h1 class="uppercase font-bold">{{producto.prod_name}}</h1>
+            <section class="">
+                <div>
+                    <label data-tooltip-target="tooltip-bottom" data-tooltip-placement="bottom"
+                        class="ms-3 mb-2 md:mb-0  font-medium text-sm pe-5 py-2.5 text-center">{{producto.prod_price}}€</label>
+
+                    <div id="tooltip-bottom" role="tooltip"
+                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                        Precio
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                    <label>|</label>
+                    <label data-tooltip-target="tooltip-bottom-2" data-tooltip-placement="bottom"
+                        class="ms-3 mb-2 md:mb-0  font-medium text-sm px-5 py-2.5 text-center">{{producto.prod_rate}}</label>
+
+                    <div id="tooltip-bottom-2" role="tooltip"
+                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                        Estrellas
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+
+                    <label>|</label>
+                    <label data-tooltip-target="tooltip-bottom-3" data-tooltip-placement="bottom"
+                        class="ms-3 mb-2 md:mb-0  font-medium text-sm px-5 py-2.5 text-center">
+                        {{producto.prod_stock_quantity}} </label>
+
+                    <div id="tooltip-bottom-3" role="tooltip"
+                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                        Cantidad de Stock
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+
+
+                    <label>|</label>
+                    <label data-tooltip-target="tooltip-bottom-4" data-tooltip-placement="bottom"
+                        class="ms-3 mb-2 md:mb-0  font-medium text-sm px-5 py-2.5 text-center"> {{producto.prod_views}}
+                    </label>
+
+                    <div id="tooltip-bottom-4" role="tooltip"
+                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                        Visitas al producto
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                </div>
+            </section>
+            <h3 class="pt-10">{{producto.prod_description}}</h3>
+        </div>
+    </div>
+</section>

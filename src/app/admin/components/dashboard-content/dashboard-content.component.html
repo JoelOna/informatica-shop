@@ -2,7 +2,7 @@
     <div class="grid md:grid-cols-3 sm:grid-cols-1 gap-4 mb-4">
         <app-total-earned></app-total-earned>    
         <app-total-earned></app-total-earned>     
-        <app-total-earned></app-total-earned>
+        <app-category-list/>
     </div>
     <div class="grid md:grid-cols-1 sm:grid-cols-1 gap-1 mb-4">
         <app-list-products></app-list-products>
@@ -11,6 +11,11 @@
 <div *ngIf="component == 'productos'">
     <div class="grid grid-cols-1 mb-4">
         <app-list-products/>
+    </div>
+</div>
+<div *ngIf="component == 'categorias'">
+    <div class="grid grid-cols-1 mb-4">
+        <app-category-list/>
     </div>
 </div>
 
