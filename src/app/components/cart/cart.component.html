@@ -1,8 +1,24 @@
-<section class="grid grid-cols-2">
-    
-    <div *ngFor="let item of items" >
-            {{item.data.prod_name}}
-            {{item.quantity}}
+<section class="container mt-40 mx-auto px-20 bg-slate-100 rounded-md" >
+    <h3 class="pt-10 italic text-2xl underline font-bold">Productos</h3>
+    <div class="pb-10 ">
+    <div *ngFor="let item of items" class="pt-5">
+        <div class="grid grid-cols-4 gap-">
+            <img src="../../../assets/carousel-1.svg" alt="" srcset="" class="h-52 rounded-md">
+            <div class="py-16 grid grid-cols-2">
+                <div> {{item.data.prod_name}}</div>
+               
+                <div class="flex flex-row gap-3">
+                    <button class="btn">-</button>
+                    <input type="numeric" value="{{item.quantity}}" class="rounded-md h-10 w-20 text-center">
+                    <button class="btn" (click)="addItemToCart(item.data.prod_name, item.quantity)">+</button>
+                </div>
+        
+            </div>
+            
+        </div>
+            
     </div>
+</div>
+<a class="btn justify-end mb-10" [routerLink]="'/proceso-compra'"> Comprar</a>
 </section>
 

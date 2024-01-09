@@ -13,6 +13,7 @@ export class CartComponent implements OnInit{
   @Input() quantity: number = 0
   items_id: any = []
   items: any[] = []
+
   ngOnInit(): void {
     this.getItems()
   }
@@ -34,5 +35,9 @@ export class CartComponent implements OnInit{
     )
    })
    
+  }
+
+  addItemToCart(product_id:any, quantity:any):void{
+    console.log(this.cart_serivce.addToCart(product_id,quantity))
   }
 }
