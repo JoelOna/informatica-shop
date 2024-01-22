@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/interface/iproduct';
 import { ProductDataService } from 'src/app/services/product-data.service';
 
@@ -12,20 +12,31 @@ export class ListProductsComponent implements OnInit{
   productos: IProduct[] = []
   nextPage: string = ''
   prevPage: string = ''
+  @Input() main_dashboard:boolean = false
 
   ngOnInit(): void {
+    const url = window.location.pathname;
+    if (url === '/ifhsop-admin') {
+      this.main_dashboard = true
+    }
+    console.log(url === '/ifshop-admin');
+    
+    console.log(this.main_dashboard);
+    
+    console.log(url);
+    
     this.getProductos();
 
     console.log(this.nextPage)
     console.log(this.prevPage)
 
-    const nextPageBtn = this.elementRef.nativeElement.querySelector('#next-page')
-    nextPageBtn.addEventListener('click', ()=> this.getNextProducts(this.nextPage, nextPageBtn,prevPageBtn))
+    // const nextPageBtn = this.elementRef.nativeElement.querySelector('#next-page')
+    // nextPageBtn.addEventListener('click', ()=> this.getNextProducts(this.nextPage, nextPageBtn,prevPageBtn))
 
     
 
-    const prevPageBtn = this.elementRef.nativeElement.querySelector('#prev-page')
-    prevPageBtn.addEventListener('click', ()=> this.getPrevProducts(this.prevPage, prevPageBtn, nextPageBtn))
+    // const prevPageBtn = this.elementRef.nativeElement.querySelector('#prev-page')
+    // prevPageBtn.addEventListener('click', ()=> this.getPrevProducts(this.prevPage, prevPageBtn, nextPageBtn))
   }
 
   getProductos():void{

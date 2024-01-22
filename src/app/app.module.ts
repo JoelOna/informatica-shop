@@ -15,12 +15,14 @@ import { TotalEarnedComponent } from './admin/components/total-earned/total-earn
 import { ListProductsComponent } from './admin/components/products/list-products/list-products.component';
 import { DashboardContentComponent } from './admin/components/dashboard-content/dashboard-content.component';
 import { ViewProductComponent } from './admin/components/products/view-product/view-product.component';
-import { LoginComponentComponent } from './components/login-component/login-component.component';
 import { LoginComponent } from './components/login/login.component';
 import { CategoryListComponent } from './admin/components/categories/category-list/category-list.component';
 import { EditProductComponent } from './admin/components/products/edit-product/edit-product.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ShopProcesComponent } from './components/shop-proces/shop-proces.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { CookieModule } from 'ngx-cookie';
 
 
 @NgModule({
@@ -38,17 +40,19 @@ import { ShopProcesComponent } from './components/shop-proces/shop-proces.compon
     ListProductsComponent,
     DashboardContentComponent,
     ViewProductComponent,
-    LoginComponentComponent,
     LoginComponent,
     CategoryListComponent,
     EditProductComponent,
     CartComponent,
-    ShopProcesComponent
+    ShopProcesComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    CookieModule.withOptions({storeUnencoded:true})
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ICategory } from 'src/app/interface/icategory';
 import { CategoryDataService } from 'src/app/services/category-data.service';
 
@@ -10,6 +10,7 @@ import { CategoryDataService } from 'src/app/services/category-data.service';
 export class CategoryListComponent implements OnInit{
   constructor(private category_service:CategoryDataService){}
   categories: ICategory[] = []
+  @Input() main_dashboard: boolean = true
 
   ngOnInit(): void {
     this.getCategories()

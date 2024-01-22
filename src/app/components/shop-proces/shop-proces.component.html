@@ -1,0 +1,17 @@
+<section class="container mt-40 mx-auto px-20 bg-slate-100 rounded-md">
+    <div class="grid grid-cols-2">
+        <div>
+            <form action="">
+
+            </form>
+        </div>
+        <div>
+            <div *ngFor="let item of items">
+                <h2 class="font-bold">{{item.data.prod_name}} x {{item.quantity}}</h2>
+                <label for="" class="text-end">{{item.data.prod_price}}</label>
+            </div>
+            <hr>
+            <p class="text-end">TOTAL: 12€</p>
+        </div>
+    </div>
+</section>
