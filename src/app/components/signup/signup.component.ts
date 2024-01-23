@@ -19,7 +19,34 @@ export class SignupComponent implements OnInit{
     this.myForm = this.formBuilder.group({
       email: '',
       password: '',
-      user_name: ''
+      user_name: '',
+      name: '',
+      last_name: ''
     })
+  }
+
+  onSubmit():void{
+    const formData = new FormData()
+    const email = this.myForm.get('email')
+    const password = this.myForm.get('password')
+    const user_name = this.myForm.get('user_name')
+    const name = this.myForm.get('name')
+    const last_name = this.myForm.get('last_name')
+
+    if (email && password && user_name && name && last_name) {
+      formData.append('email',email.value)
+      formData.append('password',password.value)
+      formData.append('user_name',user_name.value)
+      formData.append('name',name.value)
+      formData.append('last_name',last_name.value)
+    }
+
+    this.signup_service.signup(formData).subscribe(
+      resp=>{
+        console.log(resp)
+      },error=>{
+
+      }
+    )
   }
 }

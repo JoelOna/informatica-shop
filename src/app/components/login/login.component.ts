@@ -37,10 +37,10 @@ export class LoginComponent implements OnInit {
       response=>{
         // this.cookie.putObject('user',response.body.data.id)
         this.cookieService.setCookie('user',response.body.data.id)
-        if (response.body.data.user_type_id >= 2) {
+        if (response.body.data.user_type_id <= 2) {
           this.router.navigate(['ifshop-admin'])
         }else{
-          this.router.navigate(['/'])
+          this.router.navigate(['/usuario/',response.body.data.user_name])
         }
        
       },

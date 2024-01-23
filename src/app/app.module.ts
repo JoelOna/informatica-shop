@@ -21,7 +21,7 @@ import { EditProductComponent } from './admin/components/products/edit-product/e
 import { CartComponent } from './components/cart/cart.component';
 import { ShopProcesComponent } from './components/shop-proces/shop-proces.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { CookieModule } from 'ngx-cookie';
 
 
