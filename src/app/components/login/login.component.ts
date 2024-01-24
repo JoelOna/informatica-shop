@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie';
 import { CookieDataService } from 'src/app/services/cookie-data.service';
 import { LoginDataService } from 'src/app/services/login-data.service';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,8 @@ export class LoginComponent implements OnInit {
       email : '',
       password : ''
     })
+    console.log('cookie value ',this.cookieService.getCookie('user','cookie-encrypt'))
+    
   }
 
   onSubmit():void{
@@ -35,8 +38,9 @@ export class LoginComponent implements OnInit {
     console.log(formData)
     this.login_service.login(formData).subscribe(
       response=>{
-        // this.cookie.putObject('user',response.body.data.id)
-        this.cookieService.setCookie('user',response.body.data.id)
+        const id_enrcypted = CryptoJS.AES.encrypt(JSON.stringify(response.body.data.id), 'cookie-encrypt').toString()
+        console.log(id_enrcypted)
+        this.cookieService.setCookie('user',id_enrcypted)
         if (response.body.data.user_type_id <= 2) {
           this.router.navigate(['ifshop-admin'])
         }else{

@@ -1,37 +1,44 @@
 import { Injectable } from '@angular/core';
 import { ProductDataService } from './product-data.service';
+import { CookieDataService } from './cookie-data.service';
+import * as CryptoJS from 'crypto-js';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  constructor(private product_service: ProductDataService) { }
+  constructor(private product_service: ProductDataService, private cookie_service: CookieDataService) { }
 
-  public addToCart(product_id: number, quantity:number){
+  public addToCart(product_id: number, quantity: number) {
     this.product_service.getProduct(product_id).subscribe(
       response => {
         if (response.body) {
-          const storedCartString = localStorage.getItem('cart');
+          const storedCartString = this.cookie_service.getCookie('cart', 'cart-cookie');
           const cart = storedCartString ? JSON.parse(storedCartString) : [];
-
-          const existingItem  = cart.find((item:any) => item.id === product_id)
-
+  
+          const existingItem = cart.find((item: any) => item.id === product_id)
+  
           if (existingItem) {
-            existingItem.quantity += quantity
+            existingItem.quantity += quantity;
+          } else {
+            cart.push({ product_id, quantity });
           }
-          cart.push({product_id, quantity})
-          localStorage.setItem('cart', JSON.stringify(cart))
+  
+          const cart_encrypted = CryptoJS.AES.encrypt(JSON.stringify(cart), 'cart-cookie').toString();
+          this.cookie_service.setCookie('cart', cart_encrypted);
+          // localStorage.setItem('cart', JSON.stringify(cart))
         }
       },
-      error =>{
-        return undefined
+      error => {
+        return undefined;
       }
-    )
+    );
   }
+  
 
   public removeFromCart(product_id: number, quantity:number){
-     const storedCart = localStorage.getItem('cart')
+     const storedCart = this.cookie_service.getCookie('cart', 'cart-cookie')
 
      const cart = storedCart ? JSON.parse(storedCart) : []
 
@@ -41,14 +48,16 @@ export class CartService {
       if (existingItem) {
         const index = cart.indexOf(existingItem);
         cart.splice(index, 1);
-        localStorage.removeItem('cart')
-        localStorage.setItem('cart',JSON.stringify(cart))
+        this.cookie_service.delCookie('cart')
+        const cart_encrypt = CryptoJS.AES.encrypt(JSON.stringify(cart),'cart-cookie').toString()
+        this.cookie_service.setCookie('cart',cart_encrypt)
+        // localStorage.setItem('cart',JSON.stringify(cart))
       }
      }
   }
 
   public getItemsFromCart(): any{
-    const storedCart = localStorage.getItem('cart')
+    const storedCart = this.cookie_service.getCookie('cart', 'cart-cookie')
 
     const cart = storedCart ? JSON.parse(storedCart) : []
     let cart_items:any = []

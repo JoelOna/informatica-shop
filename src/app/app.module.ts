@@ -52,7 +52,7 @@ import { CookieModule } from 'ngx-cookie';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    CookieModule.withOptions({storeUnencoded:true})
+    CookieModule.withOptions({storeUnencoded:false})
   ],
   providers: [],
   bootstrap: [AppComponent]

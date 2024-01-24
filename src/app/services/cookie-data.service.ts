@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import * as CryptoJS from 'crypto-js';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ export class CookieDataService {
 
   constructor() { }
 
-  public setCookie(ame: string, val: string):void{
+  public setCookie(name: string, val: string):void{
     const date = new Date();
     const value = val;
 
@@ -18,12 +19,27 @@ export class CookieDataService {
     document.cookie = name+"="+value+"; expires="+date.toUTCString()+"; path=/";
   }
 
-  // public getCookie(name:string):any{
-  //   const value = "; " + document.cookie;
-  //   const parts = value.split("; " + name + "=");
-    
-  //   if (parts.length == 2) {
-  //       return parts.pop().split(";").shift();
-  //   }
-  // }
+  public getCookie(cname: string, encrypt_code: string): any {
+    let name = cname + "=";
+    let cookies = document.cookie.split(';');
+
+    for (let i = 0; i < cookies.length; i++) {
+      let cookie = cookies[i];
+      while (cookie.charAt(0) == ' ') {
+        cookie = cookie.substring(1);
+      }
+
+      if (cookie.indexOf(name) == 0) {
+        let encryptedValue = cookie.substring(name.length, cookie.length);
+        let decryptedValue = CryptoJS.AES.decrypt(encryptedValue, encrypt_code).toString(CryptoJS.enc.Utf8);
+        return decryptedValue;
+      }
+    }
+
+    return "";
+  }
+
+  public delCookie(name:string):void {
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  }
 }

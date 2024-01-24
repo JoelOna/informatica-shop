@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieDataService } from 'src/app/services/cookie-data.service';
 import { SignupService } from 'src/app/services/signup.service';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +12,7 @@ import { SignupService } from 'src/app/services/signup.service';
 })
 export class SignupComponent implements OnInit{
   myForm:FormGroup
-  constructor (private signup_service:SignupService, private formBuilder:FormBuilder, private router:Router, private cookie_service:CookieDataService){
+  constructor (private signup_service:SignupService, private formBuilder:FormBuilder, private router:Router, private cookieService:CookieDataService){
     this.myForm = new FormGroup({})
   }
 
@@ -44,6 +45,14 @@ export class SignupComponent implements OnInit{
     this.signup_service.signup(formData).subscribe(
       resp=>{
         console.log(resp)
+        const id_enrcypted = CryptoJS.AES.encrypt(JSON.stringify(resp.body.data.id), 'cookie-encrypt').toString()
+        console.log(id_enrcypted)
+        this.cookieService.setCookie('user',id_enrcypted)
+        if (resp.body.data.user_type_id <= 2) {
+          this.router.navigate(['ifshop-admin'])
+        }else{
+          this.router.navigate(['/usuario/',resp.body.data.user_name])
+        }
       },error=>{
 
       }
