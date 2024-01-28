@@ -38,6 +38,7 @@ export class CartComponent implements OnInit{
   }
 
   addItemToCart(product_id:any, quantity:any):void{
-    console.log(this.cart_serivce.addToCart(product_id,quantity))
+    console.log(quantity)
+    console.log('add to cart ',this.cart_serivce.addToCart(product_id,quantity))
   }
 }

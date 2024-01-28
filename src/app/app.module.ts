@@ -23,6 +23,9 @@ import { ShopProcesComponent } from './components/shop-proces/shop-proces.compon
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { CookieModule } from 'ngx-cookie';
+import { ReviewsComponent } from './components/reviews/reviews.component';
+import { ReviewStadisticsComponent } from './components/reviews/review-stadistics/review-stadistics.component';
+import { AddReviewsComponent } from './components/reviews/add-reviews/add-reviews.component';
 
 
 @NgModule({
@@ -45,7 +48,10 @@ import { CookieModule } from 'ngx-cookie';
     EditProductComponent,
     CartComponent,
     ShopProcesComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ReviewsComponent,
+    ReviewStadisticsComponent,
+    AddReviewsComponent
   ],
   imports: [
     BrowserModule,

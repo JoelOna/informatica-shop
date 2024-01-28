@@ -2,6 +2,7 @@ import { Component, OnInit,Input,ElementRef } from '@angular/core';
 import { IProduct } from 'src/app/interface/iproduct';
 import productJSON from '../../mok/products.json'
 import { ProductDataService } from 'src/app/services/product-data.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -9,7 +10,7 @@ import { ProductDataService } from 'src/app/services/product-data.service';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  constructor(private productService: ProductDataService,private elementRef: ElementRef){}
+  constructor(private productService: ProductDataService,private elementRef: ElementRef, private cart_service:CartService){}
   products: IProduct[] = []
   data: any = productJSON;
   nextPage: string = ''
@@ -89,5 +90,8 @@ export class ProductsComponent implements OnInit {
       }
       
     )
+  }
+  addToCart(product_id:any):void{
+    this.cart_service.addToCart(product_id,1)
   }
 }

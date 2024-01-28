@@ -11,6 +11,9 @@ export class UserService {
   constructor(private _http: HttpClient) { }
   
   public getUserByName(user_name:string): Observable<HttpResponse<any>>{
-    return this._http.post( environment.apiUrl + 'user/',user_name, { observe: 'response' });
+    return this._http.get( environment.apiUrl + `user/${user_name}`, { observe: 'response' });
+  }
+  public getUserById(id:any): Observable<HttpResponse<any>>{
+    return this._http.get( environment.apiUrl + `user-review/${id}`, { observe: 'response' });
   }
 }

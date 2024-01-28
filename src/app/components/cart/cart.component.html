@@ -9,7 +9,7 @@
                
                 <div class="flex flex-row gap-3">
                     <button class="btn">-</button>
-                    <input type="numeric" value="{{item.quantity}}" class="rounded-md h-10 w-20 text-center">
+                    <input type="numeric" value="{{item.quantity}} " class="rounded-md h-10 w-20 text-center" (input)="addItemToCart(item.data.prod_name, $event.target)">
                     <button class="btn" (click)="addItemToCart(item.data.prod_name, item.quantity)">+</button>
                 </div>
         
