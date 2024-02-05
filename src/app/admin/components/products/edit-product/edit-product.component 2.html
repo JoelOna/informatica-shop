@@ -1,0 +1,46 @@
+<app-admin-dashboard>
+    <section class="container mx-auto px-20 pt-10">
+        <form action="">
+            <div class="grid md:grid-cols-2 sm:grid-cols-1 gap-16">
+                <div class="">
+                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Nombre del
+                        producto</label>
+                    <input type="text" id="password" value="{{producto.prod_name}}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                </div>
+                <div class="">
+                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Precio del
+                        producto</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-currency-euro"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M17.2 7a6 7 0 1 0 0 10" />
+                                <path d="M13 10h-8m0 4h8" />
+                            </svg>
+                        </div>
+                        <input type="text" id="email-address-icon" value="{{producto.prod_price}}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 ">
+                    </div>
+                </div>
+                <label class="relative inline-flex items-center mb-5 cursor-pointer">
+                    <input type="checkbox" value="" class="sr-only peer">
+                    <div
+                        class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+                    </div>
+                    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Activo</span>
+                </label>
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="user_avatar">Upload file</label>
+                <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="user_avatar_help" id="user_avatar" type="file">
+            </div>
+            <div class="grid grid-cols-1 mt-10">
+                <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Descripción del producto</label>
+                <textarea id="message" rows="4"
+                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">{{producto.prod_description}}</textarea>
+            </div>
+        </form>
+    </section>
+
+</app-admin-dashboard>

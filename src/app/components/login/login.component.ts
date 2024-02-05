@@ -5,6 +5,7 @@ import { CookieService } from 'ngx-cookie';
 import { CookieDataService } from 'src/app/services/cookie-data.service';
 import { LoginDataService } from 'src/app/services/login-data.service';
 import * as CryptoJS from 'crypto-js';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +14,22 @@ import * as CryptoJS from 'crypto-js';
 })
 export class LoginComponent implements OnInit {
   myForm:FormGroup;
-  constructor(private login_service: LoginDataService, private formBuilder:FormBuilder, private router: Router, private cookie:CookieService, private cookieService:CookieDataService){
+  constructor(private login_service: LoginDataService, private formBuilder:FormBuilder, private router: Router, private cookie:CookieService, private cookieService:CookieDataService, private user_service : UserService){
     this.myForm = new FormGroup({})
   }
 
   ngOnInit(): void {
+    if (this.cookieService.getCookie('user','cookie-encrypt')) {
+      const user_id = this.cookieService.getCookie('user','cookie-encrypt')
+     this.user_service.getUserById(user_id).subscribe(
+        resp=>{
+          const user_name = resp.body.data[0].user_name
+          // this.router.navigate(['usuario',user_name])
+        }
+      )
+      
+      // this.router.navigate(['usuario'])
+    }
     this.myForm = this.formBuilder.group({
       email : '',
       password : ''
@@ -39,8 +51,10 @@ export class LoginComponent implements OnInit {
     this.login_service.login(formData).subscribe(
       response=>{
         const id_enrcypted = CryptoJS.AES.encrypt(JSON.stringify(response.body.data.id), 'cookie-encrypt').toString()
-        console.log(id_enrcypted)
+        const token = CryptoJS.AES.encrypt(JSON.stringify(response.body.token), 'token-encrypt').toString()
+        console.log(response.body.token)
         this.cookieService.setCookie('user',id_enrcypted)
+        this.cookieService.setCookie('token',token)
         if (response.body.data.user_type_id <= 2) {
           this.router.navigate(['ifshop-admin'])
         }else{
