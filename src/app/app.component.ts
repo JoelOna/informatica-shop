@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   mainClass: string = '';
   constructor(private router: Router){  }
   private setMainClass(url: string): void {
-    if (url.includes('/ifshop-admin')) {
+    if (url.includes('/ifshop-admin') || url.includes('/usuario')) {
       this.mainClass = 'hidden';
     } else {
       this.mainClass = '';

@@ -8,6 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ShopProcesComponent } from './components/shop-proces/shop-proces.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
+import { UserReviewComponent } from './components/user/user-review/user-review.component';
 
 const routes: Routes = [
   { path: 'ifshop-admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminRoutingModule), title: 'Admin | Informatica Shop' },
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path:'signup', component:SignupComponent, title: 'Registro | Informatica Shop'},
   {path:'carrito', component:CartComponent, title: 'Carrito | Informatica Shop'},
   {path:'proceso-compra', component:ShopProcesComponent, title: 'Proceso de comprar | Informatica Shop'},
-  {path:'usuario/:user_name', component:UserProfileComponent}
+  {path:'usuario/:user_name', component:UserProfileComponent},
+  {path:'usuario/:user_name/reviews', component:UserReviewComponent, title: 'Reviews | Informatica Shop'}
 ];
 
 @NgModule({

@@ -1,0 +1,41 @@
+<app-user-nav>
+    <div class="overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Producto
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Puntuación
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Titulo
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Descripción
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let review of reviews" class="bg-white border-b  hover:bg-gray-50 ">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                        {{review.review_product_id}}
+                    </th>
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                        {{review.review_rate}}
+                    </td>
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                        {{review.review_title}}
+                    </td>
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                        {{review.review_description}}
+                    </td>
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                        <button class="btn" (click)="deleteReview(review.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</app-user-nav>

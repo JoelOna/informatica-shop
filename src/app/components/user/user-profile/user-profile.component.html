@@ -1,2 +1,20 @@
-<p>user-profile works!</p>
-<h2>{{user.user_name}}</h2>
+<app-user-nav [user_name]="this.user.user_name">
+    <section class="flex flex-row gap-x-4">
+        <img src="../../../../assets/carousel-1.svg" alt="" srcset="" class="h-auto max-w-xs rounded-2xl">
+        <div>
+            <h2 class="uppercase font-semibold">{{user.user_name}}</h2>
+            <p>{{user.name}}</p>
+            <p>{{user.last_name}}</p>
+        </div>
+    </section>
+
+<div class="grid grid-cols-2 mt-24">
+    <section>
+        <div>
+            <p class="font-semibold">Correo electronico</p>
+            <p>{{user.email}}</p>
+        </div>
+    </section>
+</div>
+</app-user-nav>
+

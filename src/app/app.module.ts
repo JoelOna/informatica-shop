@@ -26,6 +26,8 @@ import { CookieModule } from 'ngx-cookie';
 import { ReviewsComponent } from './components/reviews/reviews.component';
 import { ReviewStadisticsComponent } from './components/reviews/review-stadistics/review-stadistics.component';
 import { AddReviewsComponent } from './components/reviews/add-reviews/add-reviews.component';
+import { UserNavComponent } from './components/user-nav/user-nav.component';
+import { UserReviewComponent } from './components/user/user-review/user-review.component';
 
 
 @NgModule({
@@ -51,7 +53,9 @@ import { AddReviewsComponent } from './components/reviews/add-reviews/add-review
     UserProfileComponent,
     ReviewsComponent,
     ReviewStadisticsComponent,
-    AddReviewsComponent
+    AddReviewsComponent,
+    UserNavComponent,
+    UserReviewComponent
   ],
   imports: [
     BrowserModule,

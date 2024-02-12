@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
      this.user_service.getUserById(user_id).subscribe(
         resp=>{
           const user_name = resp.body.data[0].user_name
-          // this.router.navigate(['usuario',user_name])
+          this.router.navigate(['usuario',user_name])
         }
       )
       

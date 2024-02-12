@@ -25,7 +25,6 @@ export class UserProfileComponent implements OnInit{
 
   ngOnInit(): void {
     const user_name:any = this.route.snapshot.paramMap.get('user_name')
-   
     this.getuser(user_name)
   }
 
